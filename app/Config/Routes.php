@@ -20,6 +20,7 @@ $routes->get('/player/add', 'Player::pagePlayerAdd');
 $routes->post('/player/create', 'Player::postPlayerCreate');
 $routes->get('/player/edit/(:num)', 'Player::pagePlayerEdit/$1');
 $routes->post('/player/update', 'Player::postPlayerUpdate');
+$routes->post('/player/delete', 'Player::postPlayerDelete');
 
 $routes->get('/organization', 'Organization::index');
 $routes->get('/organization/add', 'Organization::pageOrganizationAdd');

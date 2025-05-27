@@ -112,4 +112,22 @@ class Player extends BaseController
             echo view('player/footer');
         }
     }
+
+    public function postPlayerDelete()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'id' => 'required',
+        ]))
+        {
+            $id = $this->request->getPost('id');
+
+            $playerModel = new PlayerModel();
+
+            $playerModel->delete($id);
+
+            //TODO: delete the logo too
+
+            return redirect()->to('player');
+        }
+    }
 }

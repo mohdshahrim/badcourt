@@ -46,4 +46,11 @@
 
         <button class="w3-button w3-round w3-red" type="submit">Submit</button>
     </form>
+
+    <br>
+
+    <form class="w3-container" method="post" action="/player/delete">
+        <input type="hidden" name="id" value="<?= $player['id']?>"/>
+        <button class="w3-button w3-round w3-border w3-border-red">Delete</button>
+    </form>
 </main>

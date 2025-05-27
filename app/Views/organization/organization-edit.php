@@ -40,6 +40,6 @@
 
     <form class="w3-container" method="post" action="/organization/delete">
         <input type="hidden" name="id" value="<?= $organization['id'] ?>"/>
-        <button class="w3-button w3-red w3-round" type="submit">Delete</button>
+        <button class="w3-button w3-round w3-border w3-border-red" type="submit">Delete</button>
     </form>
 </main>
