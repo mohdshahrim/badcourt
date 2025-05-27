@@ -19,18 +19,22 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Organization</th>
+                <th>Gender</th>
                 <th>Tel No.</th>
                 <th>Options</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Abu Bakar</td>
-                <td>STIDC</td>
-                <td>0198390727</td>
-                <td>
-                    edit
-                </td>
-            </tr>
+            <?php foreach ($player as $key=>$row):?>
+                <tr>
+                    <td><?= ($key+1) ?></td>
+                    <td><?= $row['name'] ?></td>
+                    <td><?= $row['organization_id'] ?></td>
+                    <td><?= $row['gender'] ?></td>
+                    <td><?= $row['contact_no'] ?></td>
+                    <td>
+                        <a href="/player/edit/<?= $row['id'] ?>">edit</a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
         </table>
     </div>
 
