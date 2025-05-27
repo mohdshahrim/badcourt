@@ -26,3 +26,4 @@ $routes->get('/organization/add', 'Organization::pageOrganizationAdd');
 $routes->post('/organization/create', 'Organization::postOrganizationCreate');
 $routes->get('/organization/edit/(:num)', 'Organization::pageOrganizationEdit/$1');
 $routes->post('/organization/update', 'Organization::postOrganizationUpdate');
+$routes->post('/organization/delete', 'Organization::postOrganizationDelete');

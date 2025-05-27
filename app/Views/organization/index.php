@@ -14,16 +14,25 @@
     <br>
 
     <div class="w3-container">
-        <table class="w3-table w3-border w3-bordered w3-small">
+        <table class="w3-table w3-border w3-bordered">
             <tr>
                 <th>No</th>
+                <th>Logo</th>
                 <th>Name</th>
                 <th>Short name</th>
-                <th>Logo</th>
                 <th>Options</th>
             </tr>
-            <tr>
-            </tr>
+            <?php foreach ($organization as $key=>$row):?>
+                <tr>
+                    <td><?= ($key+1) ?></td>
+                    <td><img width="100" src="<?= $row['logo_path'] ?>"/></td>
+                    <td><?= $row['name'] ?></td>
+                    <td><?= $row['short_name'] ?></td>
+                    <td>
+                        <a href="/organization/edit/<?= $row['id'] ?>">edit</a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
         </table>
     </div>
 </main>
