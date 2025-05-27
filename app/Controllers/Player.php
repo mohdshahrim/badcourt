@@ -11,9 +11,16 @@ class Player extends BaseController
 {
     public function index()
     {
-        $playerModel = new PlayerModel();
+        $db = \Config\Database::connect();
+        $builder = $db->table('players');
+        $builder->select('players.id, players.organization_id, players.name as pn, players.gender, players.contact_no, organizations.logo_path');
+        $builder->join('organizations', 'organizations.id = players.organization_id');
+        $query = $builder->get();
+
+        //$playerModel = new PlayerModel();
         $data = [
-            'player' => $playerModel->findAll(),
+            //'player' => $playerModel->findAll(),
+            'player' => $query->getResultArray(),
         ];
 
         echo view('player/header');

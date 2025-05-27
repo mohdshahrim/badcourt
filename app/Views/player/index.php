@@ -14,7 +14,7 @@
     <br>
 
     <div class="w3-container">
-        <table class="w3-table w3-border w3-bordered w3-small">
+        <table class="w3-table w3-border w3-bordered">
             <tr>
                 <th>No</th>
                 <th>Name</th>
@@ -26,8 +26,8 @@
             <?php foreach ($player as $key=>$row):?>
                 <tr>
                     <td><?= ($key+1) ?></td>
-                    <td><?= $row['name'] ?></td>
-                    <td><?= $row['organization_id'] ?></td>
+                    <td><?= $row['pn'] ?></td>
+                    <td><img width="50" src="/<?= $row['logo_path'] ?>"/></td>
                     <td><?= $row['gender'] ?></td>
                     <td><?= $row['contact_no'] ?></td>
                     <td>
