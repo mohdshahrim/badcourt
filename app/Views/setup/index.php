@@ -1,7 +1,7 @@
 <main>
     <div class="w3-container">
-        <h3>Setup for first time</h3>
         <a class="w3-small w3-text-red" href="/home">cancel</a>
+        <h3>Setup for first time</h3>
     </div>
 
     <br>

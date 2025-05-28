@@ -1,8 +1,10 @@
 <main>
-    <h2><?= $status ?></h2>
-    <p><?= $message ?></p>
+    <div class="w3-container">
+        <h2><?= $status ?></h2>
+        <p><?= $message ?></p>
 
-    <br>
+        <br>
 
-    <p>Return to <a href="/organization">organization registration</a> or <a href="/organization/edit/<?= $id?>">edit</a></p>
+        <p>Return to <a href="/organization">organization registration</a> or <a href="/organization/edit/<?= $id?>">edit</a></p>
+    </div>
 </main>

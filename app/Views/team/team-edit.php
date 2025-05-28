@@ -68,7 +68,7 @@
             <input class="w3-radio" type="radio" name="category" value="Women" id="team-cat-women" <?= ($team['category']=="Women")?"checked":"" ?>>
             <label for="team-cat-women">Women Double</label>
             &nbsp;&nbsp;&nbsp;
-            <input class="w3-radio" type="radio" name="category" value="Mixed" id="team-cat-mixed" <?= ($team['category']=="Mized")?"checked":"" ?>>
+            <input class="w3-radio" type="radio" name="category" value="Mixed" id="team-cat-mixed" <?= ($team['category']=="Mixed")?"checked":"" ?>>
             <label for="team-cat-mixed">Mixed Double</label>
         </div>
 
