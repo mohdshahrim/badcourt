@@ -28,3 +28,11 @@ $routes->post('/organization/create', 'Organization::postOrganizationCreate');
 $routes->get('/organization/edit/(:num)', 'Organization::pageOrganizationEdit/$1');
 $routes->post('/organization/update', 'Organization::postOrganizationUpdate');
 $routes->post('/organization/delete', 'Organization::postOrganizationDelete');
+
+$routes->get('/team', 'Team::index');
+$routes->get('/team/org', 'Team::pageTeamOrg'); // select org before going to pageTeamAdd
+$routes->get('/team/org/(:num)/add', 'Team::pageTeamAdd/$1');
+$routes->post('/team/create', 'Team::postTeamCreate');
+$routes->get('/team/edit/(:num)', 'Team::pageTeamEdit/$1');
+$routes->post('/team/update', 'Team::postTeamUpdate');
+$routes->post('/team/delete', 'Team::postTeamDelete');
