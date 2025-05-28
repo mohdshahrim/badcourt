@@ -28,7 +28,7 @@
             <select class="w3-select w3-border" name="player1">
                 <option value="0"></option>
                 <?php foreach ($player as $key=>$row):?>
-                    <option value="<?= $row['id']?>"><?= $row['name']?></option>
+                    <option value="<?= $row['id']?>" <?= ($team['player1']==$row['id'])?"selected":"" ?>><?= $row['name']?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -40,7 +40,7 @@
             <select class="w3-select w3-border" name="player2">
                 <option value="0"></option>
                 <?php foreach ($player as $key=>$row):?>
-                    <option value="<?= $row['id']?>"><?= $row['name']?></option>
+                    <option value="<?= $row['id']?>" <?= ($team['player2']==$row['id'])?"selected":"" ?>><?= $row['name']?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -52,7 +52,7 @@
             <select class="w3-select w3-border" name="reserve">
                 <option value="0"></option>
                 <?php foreach ($player as $key=>$row):?>
-                    <option value="<?= $row['id']?>"><?= $row['name']?></option>
+                    <option value="<?= $row['id']?>" <?= ($team['reserve']==$row['id'])?"selected":"" ?>><?= $row['name']?></option>
                 <?php endforeach ?>
             </select>
         </div>

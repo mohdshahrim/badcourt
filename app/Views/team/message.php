@@ -4,5 +4,5 @@
 
     <br>
 
-    <p>Return to <a href="/player">team registration</a> or <a href="/team/edit/<?= $id?>">edit</a></p>
+    <p>Return to <a href="/team">team registration</a> or <a href="/team/edit/<?= $id?>">edit</a></p>
 </main>

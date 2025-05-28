@@ -34,7 +34,7 @@
                     <td><?= $row['p2'] ?></td>
                     <td><?= $row['r'] ?></td>
                     <td><?= $row['category'] ?></td>
-                    <td></td>
+                    <td><?= $row['updated_at'] ?></td>
                     <td>
                         <a href="/team/edit/<?= $row['id'] ?>">edit</a>
                     </td>

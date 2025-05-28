@@ -13,7 +13,7 @@ class Team extends BaseController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('teams');
-        $builder->select('teams.id, teams.organization_id, teams.team_name, p1.name as p1, p2.name as p2, r.name as r, teams.category, organizations.logo_path');
+        $builder->select('teams.id, teams.organization_id, teams.team_name, p1.name as p1, p2.name as p2, r.name as r, teams.category, teams.updated_at, organizations.logo_path');
         $builder->join('organizations', 'organizations.id = teams.organization_id');
         $builder->join('players as p1', 'p1.id = teams.player1', 'left');
         $builder->join('players as p2', 'p2.id = teams.player2', 'left');
@@ -110,6 +110,43 @@ class Team extends BaseController
         echo view('team/header');
         echo view('team/team-edit', $data);
         echo view('team/footer');
+    }
+
+    public function postTeamUpdate()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'id' => 'required',
+        ]))
+        {
+            $id = $this->request->getPost('id');
+            $team_name = $this->request->getPost('team_name');
+            $player1 = $this->request->getPost('player1'); // player id
+            $player2 = $this->request->getPost('player2'); // player id
+            $reserve = $this->request->getPost('reserve');
+            $category = $this->request->getPost('category');
+            $organization_id = $this->request->getPost('organization_id'); // org id
+
+            $data = [
+                'team_name' => $team_name,
+                'player1' => $player1,
+                'player2' => $player2,
+                'reserve' => $reserve,
+                'category' => empty(!$category)?$category:"Men",
+                'organization_id' => $organization_id,
+            ];
+
+            $teamModel = new TeamModel();
+
+            $teamModel->update($id, $data);
+
+            $message['status'] = "Success";
+            $message['message'] = "Team updated";
+            $message['id'] = $id;
+
+            echo view('team/header');
+            echo view('team/message', $message);
+            echo view('team/footer');
+        }
     }
 
 }
