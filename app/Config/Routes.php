@@ -36,3 +36,8 @@ $routes->post('/team/create', 'Team::postTeamCreate');
 $routes->get('/team/edit/(:num)', 'Team::pageTeamEdit/$1');
 $routes->post('/team/update', 'Team::postTeamUpdate');
 $routes->post('/team/delete', 'Team::postTeamDelete');
+
+$routes->get('/match', 'MatchController::index'); // list of matches
+$routes->get('/match/new', 'MatchController::pageMatchNew');
+$routes->post('/match/create', 'MatchController::postMatchCreate');
+$routes->get('/match/edit/(:num)', 'MatchController::pageMatchEdit/$1');

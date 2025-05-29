@@ -16,10 +16,11 @@
     <br>
 
     <div class="w3-container">
-        <a href="/matches" class="w3-button w3-large w3-round w3-teal w3-margin-right">New Match</a>
+        <a href="/match/new" class="w3-button w3-large w3-round w3-teal w3-margin-right">New Match</a>
         &nbsp;
         &nbsp;
         &nbsp;
+        <a href="/match" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Matches</a>
         <a href="/player" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Player</a>
         <a href="/team" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Team</a>
         <a href="/organization" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Organization</a>

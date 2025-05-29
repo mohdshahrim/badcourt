@@ -14,18 +14,18 @@ class TeamModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['organization_id','team_name','player1','player2','reserve','category','updated_at'];
 
-    protected bool $allowEmptyInserts = false;
+    protected bool $allowEmptyInserts = true;
     protected bool $updateOnlyChanged = true;
 
     protected array $casts = [];
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = null;
+    protected $createdField  = '';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = null;
+    protected $deletedField  = '';
 
     // Validation
     protected $validationRules      = [];

@@ -17,6 +17,7 @@ class MatchModel extends Model
         'team1_id',
         'team2_id',
         'round',
+        'match_category',
         'game1_score1',
         'game1_score2',
         'game2_score1',
@@ -28,10 +29,10 @@ class MatchModel extends Model
         'start_time',
         'end_time',
         'court_number',
-        'last_updated',
+        'updated_at',
     ];
 
-    protected bool $allowEmptyInserts = false;
+    protected bool $allowEmptyInserts = true;
     protected bool $updateOnlyChanged = true;
 
     protected array $casts = [];
@@ -40,9 +41,9 @@ class MatchModel extends Model
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = null;
+    protected $createdField  = '';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = null;
+    protected $deletedField  = '';
 
     // Validation
     protected $validationRules      = [];
