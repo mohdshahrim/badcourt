@@ -42,3 +42,4 @@ $routes->get('/match/new', 'MatchController::pageMatchNew');
 $routes->post('/match/create', 'MatchController::postMatchCreate');
 $routes->get('/match/edit/(:num)', 'MatchController::pageMatchEdit/$1');
 $routes->post('/match/update', 'MatchController::postMatchUpdate');
+$routes->post('/match/delete', 'MatchController::postMatchDelete');

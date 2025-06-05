@@ -220,4 +220,26 @@ class MatchController extends BaseController
             echo view('match/footer');
         }
     }
+
+    public function postMatchDelete()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'id' => 'required',
+        ]))
+        {
+            $id = $this->request->getPost('id');
+
+            $matchModel = new MatchModel();
+
+            $matchModel->delete($id);
+
+            $message['status'] = "Success";
+            $message['message'] = "Match deleted";
+            $message['id'] = $id;
+
+            echo view('match/header');
+            echo view('match/message', $message);
+            echo view('match/footer');
+        }
+    }
 }
