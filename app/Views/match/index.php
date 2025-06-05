@@ -48,9 +48,9 @@
                     </td>
                     <td><?= $row['match_status'] ?></td>
                     <td>
-                        <a href="/organization/edit/<?= $row['id'] ?>">edit</a>
+                        <a href="/match/edit/<?= $row['id'] ?>">edit</a>
                         &nbsp;
-                        <a href="/organization/edit/<?= $row['id'] ?>">spectate</a>
+                        <a href="/match/spectate/<?= $row['id'] ?>">spectate</a>
                     </td>
                 </tr>
             <?php endforeach ?>

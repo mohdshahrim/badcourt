@@ -4,8 +4,6 @@ namespace App\Controllers;
 
 use CodeIgniter\I18n\Time;
 use App\Controllers\BaseController;
-use App\Models\OrganizationModel;
-use App\Models\PlayerModel;
 use App\Models\TeamModel;
 use App\Models\MatchModel;
 
@@ -127,16 +125,99 @@ class MatchController extends BaseController
 
     public function pageMatchEdit($id)
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('matches');
+        $builder->select('
+            matches.id,
+            matches.match_name,
+            matches.team1_id,
+            team1.team_name as team1_name,
+            matches.team2_id,
+            team2.team_name as team2_name,
+            matches.round,
+            matches.match_category,
+            matches.game1_score1,
+            matches.game1_score2,
+            matches.game2_score1,
+            matches.game2_score2,
+            matches.game3_score1,
+            matches.game3_score2,
+            matches.current_game,
+            matches.match_status,
+            matches.start_time,
+            matches.end_time,
+            matches.court_number,
+            matches.updated_at,
+        ')->where('matches.id', $id);
+        $builder->join('teams as team1', 'matches.team1_id = team1.id', 'left');
+        $builder->join('teams as team2', 'matches.team2_id = team2.id', 'left');
+        $query = $builder->get();
+
         $teamModel = new TeamModel();
-        $matchModel = new MatchModel();
         
         $data = [
             'team' => $teamModel->findAll(),
-            'match' => $matchModel->find($id),
+            'match' => $query->getResultArray()[0],
         ];
 
         echo view('match/header');
         echo view('match/match-edit', $data);
         echo view('match/footer');
+    }
+
+    public function postMatchUpdate()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'id' => 'required',
+        ]))
+        {
+            $id = $this->request->getPost('id');
+            $match_name = $this->request->getPost('match_name');
+            $team1_id = $this->request->getPost('team1_id');
+            $team2_id = $this->request->getPost('team2_id');
+            $round = $this->request->getPost('round');
+            $match_category = $this->request->getPost('match_category');
+            $game1_score1 = $this->request->getPost('game1_score1');
+            $game1_score2 = $this->request->getPost('game1_score2');
+            $game2_score1 = $this->request->getPost('game2_score1');
+            $game2_score2 = $this->request->getPost('game2_score2');
+            $game3_score1 = $this->request->getPost('game3_score1');
+            $game3_score2 = $this->request->getPost('game3_score2');
+            $current_game = $this->request->getPost('current_game');
+            $match_status = $this->request->getPost('match_status');
+            $start_time = $this->request->getPost('start_time');
+            $end_time = $this->request->getPost('end_time');
+            $court_number = $this->request->getPost('court_number');
+
+            $data = [
+                'match_name' => $match_name,
+                'team1_id' => $team1_id,
+                'team2_id' => $team2_id,
+                'round' => $round,
+                'match_category' => $match_category,
+                'game1_score1' => $game1_score1,
+                'game1_score2' => $game1_score2,
+                'game2_score1' => $game2_score1,
+                'game2_score2' => $game2_score2,
+                'game3_score1' => $game3_score1,
+                'game3_score2' => $game3_score2,
+                'current_game' => $current_game,
+                'match_status' => $match_status,
+                'start_time' => $start_time,
+                'end_time' => $end_time,
+                'court_number' => $court_number,
+            ];
+
+            $matchModel = new MatchModel();
+            $matchModel->update($id, $data);
+
+            $message['status'] = "Success";
+            $message['message'] = "Match updated";
+            $message['id'] = $id;
+
+            echo view('match/header');
+            echo view('match/message', $message);
+            echo view('match/footer');
+        }
     }
 }
