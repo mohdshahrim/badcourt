@@ -32,17 +32,13 @@
     <div class="w3-container">
         <h3>Ongoing Matches</h3>
 
-        <a href="/match" class="match-box w3-red w3-padding w3-round-large w3-margin-right">
-            <p>HTSB vs SFC</p>
-            <p>Men Double</p>
-            <p>G1: 17-15</p>
-        </a>
-
-        <a href="/match" class="match-box w3-red w3-padding w3-round-large w3-margin-right">
-            <p>STA vs STIDC</p>
-            <p>Men Double</p>
-            <p>G2: 0-3</p>
-        </a>
+        <?php foreach ($match_ongoing as $key=>$row):?>
+            <a href="/match" class="match-box w3-red w3-padding w3-round-large w3-margin-right">
+                <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
+                <p><?= $row['match_category'] ?></p>
+                <p>G1: 17-15</p>
+            </a> 
+        <?php endforeach ?>
     </div>
 
     <div class="spacer"></div>
@@ -50,11 +46,13 @@
     <div class="w3-container">
         <h3>Upcoming Matches</h3>
 
-        <a href="/match" class="match-box w3-yellow w3-padding w3-round-large w3-margin-right">
-            <p>HTSB vs STIDC</p>
-            <p>Women Double</p>
-            <p>G1: 0-0</p>
-        </a>
+        <?php foreach ($match_upcoming as $key=>$row):?>
+            <a href="/match" class="match-box w3-yellow w3-padding w3-round-large w3-margin-right">
+                <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
+                <p><?= $row['match_category'] ?></p>
+                <p>G1: 17-15</p>
+            </a> 
+        <?php endforeach ?>
     </div>
 
     <div class="spacer"></div>
@@ -62,16 +60,12 @@
     <div class="w3-container">
         <h3>Completed Matches</h3>
 
-        <a href="/match" class="match-box w3-grey w3-padding w3-round-large w3-margin-right">
-            <p>FDS vs HTSB</p>
-            <p>Men Double</p>
-            <p>G3: 0-0</p>
-        </a>
-
-        <a href="/match" class="match-box w3-grey w3-padding w3-round-large w3-margin-right">
-            <p>STIDC vs HTSB</p>
-            <p>Men Double</p>
-            <p>G3: 0-0</p>
-        </a>
+        <?php foreach ($match_completed as $key=>$row):?>
+            <a href="/match" class="match-box w3-grey w3-padding w3-round-large w3-margin-right">
+                <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
+                <p><?= $row['match_category'] ?></p>
+                <p>G1: 17-15</p>
+            </a> 
+        <?php endforeach ?>
     </div>
 </main>

@@ -14,7 +14,18 @@
     <br>
 
     <div class="w3-container">
-        <table class="w3-table w3-border w3-bordered">
+        <p>
+            filter by:
+            <a href="/match">all</a>
+            &nbsp;
+            <a href="/match?status=ongoing">ongoing</a>
+            &nbsp;
+            <a href="/match?status=upcoming">upcoming</a>
+            &nbsp;
+            <a href="/match?status=completed">completed</a>
+        </p>
+
+        <table class="w3-table w3-border w3-bordered w3-small w3-hoverable">
             <tr>
                 <th>No</th>
                 <th style="text-align:center;">Team 1</th>
@@ -38,6 +49,8 @@
                     <td><?= $row['match_status'] ?></td>
                     <td>
                         <a href="/organization/edit/<?= $row['id'] ?>">edit</a>
+                        &nbsp;
+                        <a href="/organization/edit/<?= $row['id'] ?>">spectate</a>
                     </td>
                 </tr>
             <?php endforeach ?>

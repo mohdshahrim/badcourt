@@ -45,6 +45,11 @@ class MatchController extends BaseController
         $builder->join('organizations as org1', 'team1.organization_id = org1.id', 'left');
         $builder->join('organizations as org2', 'team2.organization_id = org2.id', 'left');
 
+        if (isset($_GET['status'])) {
+            $match_status = $this->request->getGet('status');
+            $builder->where('match_status', $match_status);
+        }
+
         $query = $builder->get();
 
         $data = [
