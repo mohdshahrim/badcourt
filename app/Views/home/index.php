@@ -33,7 +33,7 @@
         <h3>Ongoing Matches</h3>
 
         <?php foreach ($match_ongoing as $key=>$row):?>
-            <a href="/match" class="match-box w3-red w3-padding w3-round-large w3-margin-right">
+            <a href="/match/edit/<?= $row['id'] ?>" class="match-box w3-red w3-padding w3-round-large w3-margin-right">
                 <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
                 <p><?= $row['match_category'] ?></p>
                 <p>G1: 17-15</p>
@@ -47,7 +47,7 @@
         <h3>Upcoming Matches</h3>
 
         <?php foreach ($match_upcoming as $key=>$row):?>
-            <a href="/match" class="match-box w3-yellow w3-padding w3-round-large w3-margin-right">
+            <a href="/match/edit/<?= $row['id'] ?>" class="match-box w3-yellow w3-padding w3-round-large w3-margin-right">
                 <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
                 <p><?= $row['match_category'] ?></p>
                 <p>G1: 17-15</p>
@@ -61,7 +61,7 @@
         <h3>Completed Matches</h3>
 
         <?php foreach ($match_completed as $key=>$row):?>
-            <a href="/match" class="match-box w3-grey w3-padding w3-round-large w3-margin-right">
+            <a href="/match/edit/<?= $row['id'] ?>" class="match-box w3-grey w3-padding w3-round-large w3-margin-right">
                 <p><?= $row['team1_id'] ?> vs <?= $row['team2_id'] ?></p>
                 <p><?= $row['match_category'] ?></p>
                 <p>G1: 17-15</p>

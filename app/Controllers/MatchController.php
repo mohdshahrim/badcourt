@@ -242,4 +242,145 @@ class MatchController extends BaseController
             echo view('match/footer');
         }
     }
+
+    public function pageMatchSpectate($id)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('matches');
+        $builder->select('
+            matches.id,
+            matches.match_name,
+            matches.team1_id,
+            team1.team_name as t1,
+            org1.logo_path as logo1,
+            matches.team2_id,
+            team2.team_name as t2,
+            org2.logo_path as logo2,
+            matches.round,
+            matches.match_category,
+            matches.game1_score1,
+            matches.game1_score2,
+            matches.game2_score1,
+            matches.game2_score2,
+            matches.game3_score1,
+            matches.game3_score2,
+            matches.current_game,
+            matches.match_status,
+            matches.start_time,
+            matches.end_time,
+            matches.court_number,
+            matches.updated_at,
+        ')->where('matches.id', $id);;
+        $builder->join('teams as team1', 'matches.team1_id = team1.id', 'left');
+        $builder->join('teams as team2', 'matches.team2_id = team2.id', 'left');
+
+        $builder->join('organizations as org1', 'team1.organization_id = org1.id', 'left');
+        $builder->join('organizations as org2', 'team2.organization_id = org2.id', 'left');
+
+        $query = $builder->get();
+
+        $data = [
+            'match' => $query->getResultArray()[0],
+        ];
+
+        echo view('match/header');
+        echo view('match/spectate', $data);
+        echo view('match/footer');
+    }
+
+    public function postMatchSpectateUpdate()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'match_id' => 'required',
+        ]))
+        {
+            $match_id = $this->request->getPost("match_id");
+            $signal = $this->request->getPost("signal");
+
+            $matchModel = new MatchModel();
+
+            $matchdata = $matchModel->find($match_id);
+            $current_game = $matchdata['current_game'];
+            $temp_score = 0;
+
+            switch($signal) {
+                case "TEAM1_PLUS":
+                    if ($current_game==1) {
+                        $game = 'game1_score1';
+                    } elseif ($current_game==2) {
+                        $game = 'game2_score1';
+                    } else {
+                        $game = 'game3_score1';
+                    }
+
+                    $temp_score = (int)$matchdata[$game];
+                    $temp_score++;
+                    $matchModel->update($match_id, [$game=>$temp_score]);
+
+                    break;
+                case "TEAM2_PLUS":
+                    if ($current_game==1) {
+                        $game = 'game1_score2';
+                    } elseif ($current_game==2) {
+                        $game = 'game2_score2';
+                    } else {
+                        $game = 'game3_score2';
+                    }
+
+                    $temp_score = (int)$matchdata[$game];
+                    $temp_score++;
+                    $matchModel->update($match_id, [$game=>$temp_score]);
+
+                    break;
+                case "TEAM1_MINUS":
+                    if ($current_game==1) {
+                        $game = 'game1_score1';
+                    } elseif ($current_game==2) {
+                        $game = 'game2_score1';
+                    } else {
+                        $game = 'game3_score1';
+                    }
+
+                    $temp_score = (int)$matchdata[$game];
+                    $temp_score--;
+                    $matchModel->update($match_id, [$game=>$temp_score]);
+                    break;
+                case "TEAM2_MINUS":
+                    if ($current_game==1) {
+                        $game = 'game1_score2';
+                    } elseif ($current_game==2) {
+                        $game = 'game2_score2';
+                    } else {
+                        $game = 'game3_score2';
+                    }
+
+                    $temp_score = (int)$matchdata[$game];
+                    $temp_score--;
+                    $matchModel->update($match_id, [$game=>$temp_score]);
+                    break;
+            }
+
+            // for easier showing
+            if ($current_game==1) {
+                $score1 = 'game1_score1';
+                $score2 = 'game1_score2';
+            } elseif ($current_game==2) {
+                $score1 = 'game2_score1';
+                $score2 = 'game2_score2';
+            } else {
+                $score1 = 'game3_score1';
+                $score2 = 'game3_score2';
+            }
+
+            //$data['message'] = "hello world";
+            $updated = $matchModel->find($match_id); //TODO: we already call the same code above, I'm not sure if this is the right thing to do
+            $data = [
+                'matchdata' => $updated,
+                'score1' => $updated[$score1],
+                'score2' => $updated[$score2],
+            ];
+
+            return $this->response->setJSON($data);
+        }
+    }
 }

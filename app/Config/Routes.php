@@ -43,3 +43,5 @@ $routes->post('/match/create', 'MatchController::postMatchCreate');
 $routes->get('/match/edit/(:num)', 'MatchController::pageMatchEdit/$1');
 $routes->post('/match/update', 'MatchController::postMatchUpdate');
 $routes->post('/match/delete', 'MatchController::postMatchDelete');
+$routes->get('/match/spectate/(:num)', 'MatchController::pageMatchSpectate/$1');
+$routes->post('/match/spectate/update', 'MatchController::postMatchSpectateUpdate');
