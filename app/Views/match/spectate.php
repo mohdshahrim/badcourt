@@ -16,11 +16,15 @@
 
         <h3 class="w3-hide-small">Spectate Match</h3>
         <p>Court Number [<span id="data_courtnumber"><?= $match['court_number']?></span>], Game/Set [<span id="data_currentgame"><?= $match['current_game']?></span>]</p>
+
+        <button onclick="swapColumns()" class="w3-button w3-blue w3-small w3-round"><i class="fa fa-exchange"></i> Switch Side</button>
     </div>
+
+    <div style="height:40px;"></div>
 
     <div class="w3-container">
         <input type="hidden" id="match_id" value="<?= $match['id'] ?>"/>
-        <table class="w3-table">
+        <table id="spectate_table" class="w3-table">
             <colgroup>
                 <col style="width: 50%">
                 <col style="width: 50%;">
@@ -118,7 +122,7 @@
 
             <tr>
                 <td colspan="2">
-                    <button onclick="spectateUpdate('COMPLETE_MATCH')" class="w3-button w3-border w3-border-teal w3-block w3-round">Complete Match</button>
+                    <button onclick="spectateUpdate('COMPLETE_MATCH')" class="w3-button w3-border w3-text-red w3-border-red w3-block w3-round">Complete Match</button>
                 </td>
             </tr>
         </table>
@@ -156,6 +160,30 @@ function spectateUpdate(signal) {
             if (data['matchdata']['match_status']=="completed") {
                 window.location.replace("/match/spectate_message");
             }
+        }
+    });
+}
+
+function swapColumns() {
+    const rows = document.querySelectorAll("#spectate_table tr");
+
+    rows.forEach(row => {
+        const tds = Array.from(row.querySelectorAll("td"));
+
+        // Only process rows with exactly 2 tds and no colspan
+        if (tds.length === 2 &&
+            !tds[0].hasAttribute("colspan") &&
+            !tds[1].hasAttribute("colspan")) {
+
+            // Swap content
+            const tempHTML = tds[0].innerHTML;
+            tds[0].innerHTML = tds[1].innerHTML;
+            tds[1].innerHTML = tempHTML;
+
+            // Swap IDs
+            const tempID = tds[0].id;
+            tds[0].id = tds[1].id;
+            tds[1].id = tempID;
         }
     });
 }
