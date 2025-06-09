@@ -45,3 +45,4 @@ $routes->post('/match/update', 'MatchController::postMatchUpdate');
 $routes->post('/match/delete', 'MatchController::postMatchDelete');
 $routes->get('/match/spectate/(:num)', 'MatchController::pageMatchSpectate/$1');
 $routes->post('/match/spectate/update', 'MatchController::postMatchSpectateUpdate');
+$routes->get('/match/spectate_message', 'MatchController::pageSpectateMessage');

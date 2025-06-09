@@ -358,6 +358,25 @@ class MatchController extends BaseController
                     $temp_score--;
                     $matchModel->update($match_id, [$game=>$temp_score]);
                     break;
+                case "FINISH_GAME":
+                    if ($current_game==3) {
+                        // trigger complete match
+                        $matchModel->update($match_id, ['match_status'=>'completed', 'end_time'=>date('Y-m-d H:i:s')]);
+                    } else {
+                        // increment the current game only
+                        $current_game++;
+                        $matchModel->update($match_id, ['current_game'=>$current_game]);
+                    }
+
+                    $matchModel->update($match_id, ['current_game'=>$current_game]);
+
+                    break;
+                case "COMPLETE_MATCH":
+                    $matchModel->update($match_id, [
+                        'match_status'=>'completed',
+                        'end_time'=>date('Y-m-d H:i:s'),
+                    ]);
+                    break;
             }
 
             // for easier showing
@@ -382,5 +401,12 @@ class MatchController extends BaseController
 
             return $this->response->setJSON($data);
         }
+    }
+
+    public function pageSpectateMessage()
+    {
+        echo view('match/header');
+        echo view('match/spectate_message');
+        echo view('match/footer');
     }
 }

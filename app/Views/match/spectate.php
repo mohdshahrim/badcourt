@@ -137,8 +137,11 @@ function spectateUpdate(signal) {
         },
         success: function(response) {
             var data = JSON.parse(response);
-            
+
             // refresh 10 informations
+            document.getElementById('data_courtnumber').innerText = data['matchdata']['court_number'];
+            document.getElementById('data_currentgame').innerText = data['matchdata']['current_game'];
+
             document.getElementById('data_score1').innerText = data['score1'];
             document.getElementById('data_score2').innerText = data['score2'];
             
@@ -149,6 +152,10 @@ function spectateUpdate(signal) {
             document.getElementById('data_game1score2').innerText = data['matchdata']['game1_score2'];
             document.getElementById('data_game2score2').innerText = data['matchdata']['game2_score2'];
             document.getElementById('data_game3score2').innerText = data['matchdata']['game3_score2'];
+
+            if (data['matchdata']['match_status']=="completed") {
+                window.location.replace("/match/spectate_message");
+            }
         }
     });
 }
