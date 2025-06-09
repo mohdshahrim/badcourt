@@ -5,6 +5,10 @@
 
         <br>
 
+        <p>If you think there's a mistake, inform the Desk Unit immediately.</p>
+
+        <br>
+
         <p>If there's any more Match you are assigned to spectate, see <a href="/">match list</a>.</p>
     </div>
 </main>

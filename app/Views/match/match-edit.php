@@ -163,7 +163,7 @@
 
     <div class="spacer"></div>
 
-    <div class="w3-margin-top">
+    <div class="w3-container w3-margin-top">
         <form method="post" action="/match/delete">
             <input type="hidden" name="id" value="<?= $match['id'] ?>" />
             <button type="submit" class="w3-button w3-small w3-border w3-border-red w3-text-red">delete</button>
