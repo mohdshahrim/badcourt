@@ -39,10 +39,18 @@
             </tr>
             <tr>
                 <td class="w3-small">
-                    <?= $match['t1'] ?>
+                    <p style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['t1'] ?></p>
+                    <div>
+                        <p class="w3-tiny w3-text-gray" style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['player1team1'] ?></p>
+                        <p class="w3-tiny w3-text-gray" style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['player2team1'] ?></p>
+                    </div>
                 </td>
                 <td class="w3-small">
-                    <?= $match['t2'] ?>
+                    <p style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['t2'] ?></p>
+                    <div>
+                        <p class="w3-tiny w3-text-gray" style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['player1team2'] ?></p>
+                        <p class="w3-tiny w3-text-gray" style="padding:0px;margin-top:0;margin-bottom:0;"><?= $match['player2team2'] ?></p>
+                    </div>
                 </td>
             </tr>
 

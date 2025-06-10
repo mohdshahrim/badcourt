@@ -252,9 +252,13 @@ class MatchController extends BaseController
             matches.match_name,
             matches.team1_id,
             team1.team_name as t1,
+            player1team1.name as player1team1,
+            player2team1.name as player2team1,
             org1.logo_path as logo1,
             matches.team2_id,
             team2.team_name as t2,
+            player1team2.name as player1team2,
+            player2team2.name as player2team2,
             org2.logo_path as logo2,
             matches.round,
             matches.match_category,
@@ -276,6 +280,11 @@ class MatchController extends BaseController
 
         $builder->join('organizations as org1', 'team1.organization_id = org1.id', 'left');
         $builder->join('organizations as org2', 'team2.organization_id = org2.id', 'left');
+
+        $builder->join('players as player1team1', 'team1.player1 = player1team1.id', 'left');
+        $builder->join('players as player2team1', 'team1.player2 = player2team1.id', 'left');
+        $builder->join('players as player1team2', 'team2.player1 = player1team2.id', 'left');
+        $builder->join('players as player2team2', 'team2.player2 = player2team2.id', 'left');
 
         $query = $builder->get();
 

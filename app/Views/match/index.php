@@ -26,6 +26,14 @@
         </p>
 
         <table class="w3-table w3-border w3-bordered w3-small w3-hoverable">
+            <colgroup>
+                <col style="width:10px;" class="w3-light-gray">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:50px;" class="w3-light-gray">
+            </colgroup>
             <tr>
                 <th>No</th>
                 <th style="text-align:center;">Team 1</th>
@@ -38,12 +46,12 @@
                 <tr>
                     <td><?= ($key+1) ?></td>
                     <td style="text-align:center;">
-                        <img width="50" src="<?= $row['logo1'] ?>"/>
+                        <img width="30" src="<?= $row['logo1'] ?>"/>
                         <p><?= $row['t1'] ?></p>
                     </td>
                     <td>vs</td>
                     <td style="text-align:center;">
-                        <img width="50" src="<?= $row['logo2'] ?>"/>
+                        <img width="30" src="<?= $row['logo2'] ?>"/>
                         <p><?= $row['t2'] ?></p>
                     </td>
                     <td><?= $row['match_status'] ?></td>
