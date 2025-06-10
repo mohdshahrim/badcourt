@@ -6,7 +6,9 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', 'Dashboard::index'); // for spectator since they don't know how to navigate further
+$routes->get('/d1', 'Dashboard::pageDashboard1');
+
 
 // one time only
 $routes->get('/setup', 'Setup::index');

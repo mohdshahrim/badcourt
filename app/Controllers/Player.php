@@ -132,8 +132,6 @@ class Player extends BaseController
 
             $playerModel->delete($id);
 
-            //TODO: delete the logo too
-
             return redirect()->to('player');
         }
     }

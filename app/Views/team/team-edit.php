@@ -77,4 +77,11 @@
         <button class="w3-button w3-round w3-red" type="submit">Submit</button>
     </form>
 
+    <div class="w3-container w3-margin-top">
+        <form method="post" action="/team/delete">
+            <input type="hidden" name="id" value="<?= $team['id'] ?>" />
+            <button type="submit" class="w3-button w3-small w3-border w3-border-red w3-text-red">delete</button>
+            <p class="w3-text-red">CAREFUL! This cannot be undone!</p>
+        </form>
+    </div>
 </main>

@@ -149,4 +149,20 @@ class Team extends BaseController
         }
     }
 
+    public function postTeamDelete()
+    {
+        if ($this->request->getMethod() === 'POST' && $this->validate([
+            'id' => 'required',
+        ]))
+        {
+            $id = $this->request->getPost('id');
+
+            $teamModel = new TeamModel();
+
+            $teamModel->delete($id);
+
+            return redirect()->to('team');
+        }
+    }
+
 }
