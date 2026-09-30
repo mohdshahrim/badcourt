@@ -15,7 +15,7 @@
         <p><a href="/" class="w3-small w3-text-red"><i class="fa fa-arrow-left"></i> cancel</a> <span>Spectate Match</span></p>
 
         <h3 class="w3-hide-small">Spectate Match</h3>
-        <p>Court Number [<span id="data_courtnumber"><?= $match['court_number']?></span>], Game/Set [<span id="data_currentgame"><?= $match['current_game']?></span>]</p>
+        <p>Court Number <span class="w3-card w3-padding w3-green" id="data_courtnumber"><?= $match['court_number']?></span>, Game/Set <span class="w3-card w3-padding w3-green" id="data_currentgame"><?= $match['current_game']?></span></p>
 
         <button onclick="swapColumns()" class="w3-button w3-blue w3-small w3-round"><i class="fa fa-exchange"></i> Switch Side</button>
     </div>

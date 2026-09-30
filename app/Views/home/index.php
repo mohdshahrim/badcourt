@@ -25,6 +25,8 @@
         <a href="/team" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Team</a>
         <a href="/organization" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Organization</a>
         <a href="/setup" class="w3-button w3-round w3-small w3-border w3-border-teal w3-margin-right">Setup</a>
+        <a href="/" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Spectator</a>
+        <a href="/livescore" class="w3-button w3-small w3-round w3-border w3-border-teal w3-margin-right">Livescore</a>
     </div>
 
     <br>

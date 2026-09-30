@@ -8,6 +8,10 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Dashboard::index'); // for spectator since they don't know how to navigate further
 $routes->get('/d1', 'Dashboard::pageDashboard1');
+$routes->get('/livescore', 'Dashboard::pageDashboardControl');
+$routes->post('/livescore/update', 'Dashboard::postDashboardUpdate');
+$routes->get('/livescore/get', 'Dashboard::getLivescore');
+$routes->get('/livescore/upcoming', 'Dashboard::getUpcoming');
 
 
 // one time only

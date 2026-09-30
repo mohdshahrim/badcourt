@@ -28,14 +28,16 @@
         <table class="w3-table w3-border w3-bordered w3-small w3-hoverable">
             <colgroup>
                 <col style="width:10px;" class="w3-light-gray">
+                <col style="width:15px;">
                 <col style="width:auto;">
-                <col style="width:auto;">
+                <col style="width:10px;">
                 <col style="width:auto;">
                 <col style="width:auto;">
                 <col style="width:50px;" class="w3-light-gray">
             </colgroup>
             <tr>
                 <th>No</th>
+                <th>ID</th>
                 <th style="text-align:center;">Team 1</th>
                 <th></th>
                 <th style="text-align:center;">Team 2</th>
@@ -45,14 +47,17 @@
             <?php foreach ($match as $key=>$row):?>
                 <tr>
                     <td><?= ($key+1) ?></td>
+                    <td><span class="w3-yellow w3-large w3-padding"><?= $row['id'] ?></span></td>
                     <td style="text-align:center;">
                         <img width="30" src="<?= $row['logo1'] ?>"/>
                         <p><?= $row['t1'] ?></p>
+                        <p class="w3-text-gray" style="padding:0;margin:0;"><?= $row['game1_score1'] ?> - <?= $row['game2_score1'] ?> - <?= $row['game3_score1'] ?></p>
                     </td>
                     <td>vs</td>
                     <td style="text-align:center;">
                         <img width="30" src="<?= $row['logo2'] ?>"/>
                         <p><?= $row['t2'] ?></p>
+                        <p class="w3-text-gray" style="padding:0;margin:0;"><?= $row['game1_score2'] ?> - <?= $row['game2_score2'] ?> - <?= $row['game3_score2'] ?></p>
                     </td>
                     <td><?= $row['match_status'] ?></td>
                     <td>
